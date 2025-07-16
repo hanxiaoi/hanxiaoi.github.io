@@ -3,8 +3,8 @@
     <channel>
         <title>寒宵的随想录</title>
         <subtitle></subtitle>
-        <icon>https://hanxiaoi.github.io/assets/favicon.ico</icon>
-        <link>https://hanxiaoi.github.io</link>
+        <icon>https://hanxiao.zeabur.app/assets/favicon.ico</icon>
+        <link>https://hanxiao.zeabur.app</link>
         <author>
           <name>寒宵</name>
         </author>
@@ -13,9 +13,9 @@
         <pubDate>Wed, 16 Jul 2025 15:28:47 +0800</pubDate>
         <lastBuildDate>Wed, 16 Jul 2025 15:28:47 +0800</lastBuildDate>
         <item>
-            <guid isPermalink="true">https://hanxiaoi.github.io/2025/07/16/hello-world/</guid>
+            <guid isPermalink="true">https://hanxiao.zeabur.app/2025/07/16/hello-world/</guid>
             <title>Hello World</title>
-            <link>https://hanxiaoi.github.io/2025/07/16/hello-world/</link>
+            <link>https://hanxiao.zeabur.app/2025/07/16/hello-world/</link>
             <pubDate>Wed, 16 Jul 2025 15:28:47 +0800</pubDate>
             <description><![CDATA[ &lt;p&gt;Welcome to &lt;a href=&#34;https://hexo.io/&#34;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&#34;https://hexo.io/docs/&#34;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&#34;https://hexo.io/docs/troubleshooting.html&#34;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&#34;https://github.com/hexojs/hexo/issues&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
