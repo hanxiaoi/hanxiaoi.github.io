@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="寒宵的随想录" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="寒宵的随想录" type="application/atom+xml"><link rel="alternate" type="application/json" title="寒宵的随想录" href="https://hanxiao.zeabur.app/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-FIHPZPCC.js"></link><link rel="modulepreload" href="/js/copy-tex-QAGSI7KF.js"></link><link rel="modulepreload" href="/js/post-S437TLIW.js"></link><link rel="modulepreload" href="/js/chunk-WOJLSUFB.js"></link><link rel="modulepreload" href="/js/index.esm-6KYLF4AO.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-U5WG3P3V.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="/wallpaper.jpg" as="image" fetchpriority="high"><meta name="description" content="记录有趣内容"/><link rel="canonical" href="https://hanxiao.zeabur.app/auto-play"><link rel="stylesheet" href="/css/post.css?v=0.5.0"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title></title><meta name="generator" content="Hexo 7.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline"></h1></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="ナビゲーションバーの切り替え"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">hanxiao's blog</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="/wallpaper.jpg" loading="eager" decoding="async" fetchpriority="high" alt="寒宵的随想录"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="page wrap"><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" lang="zh-cn"><link itemprop="mainEntityOfPage" href="https://hanxiao.zeabur.app/auto-play.html"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="寒宵"/><meta itemprop="description" content=", 记录有趣内容"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="寒宵的随想录"/></span><div class="body md" itemprop="articleBody"><script>
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        console.log('ShokaX 自动播放脚本启动...');
+        
+        // 点击播放器按钮显示播放器
+        const playerBtn = document.querySelector('#tool .item.player');
+        if (playerBtn) {
+            playerBtn.click();
+            console.log('已显示音乐播放器');
+            
+            // 延迟播放音乐
+            setTimeout(() => {
+                const audio = document.querySelector('audio');
+                if (audio && audio.src && audio.paused) {
+                    console.log('尝试自动播放:', audio.src);
+                    audio.play().then(() => {
+                        console.log('🎵 音乐自动播放成功！');
+                    }).catch(e => {
+                        console.log('⚠️ 自动播放被浏览器阻止，等待用户交互...');
+                        
+                        // 用户点击任意地方后播放
+                        document.addEventListener('click', function autoPlayOnClick() {
+                            if (audio.paused) {
+                                audio.play().then(() => {
+                                    console.log('🎵 用户交互后播放成功！');
+                                }).catch(console.log);
+                            }
+                        }, { once: true });
+                    });
+                }
+            }, 2000);
+        } else {
+            console.log('❌ 未找到播放器按钮');
+        }
+    }, 3000); // 延迟3秒等待页面完全加载
+});
+</script></div><footer><div class="meta"></div><div id="copyright"><ul><li class="author"><strong>著者：</strong>寒宵<i class="ic i-at"><em>@</em></i>寒宵的随想录</li><li class="link"><strong>記事へのリンク：</strong><a href="https://hanxiao.zeabur.app/auto-play.html" title="">https://hanxiao.zeabur.app/auto-play.html</a></li><li class="license"><strong>著作権表示：</strong>このブログ内のすべての記事は、特別な記載がない限り <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> の下のライセンスで保護されています。</li></ul></div></footer></article></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="見出し"></div><div class="related panel pjax" data-title="関連記事"></div><div class="overview panel" data-title="概要"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="寒宵" src="/assets/avatar.jpg"/><p class="name" itemprop="name">寒宵</p><div class="description" itemprop="description">记录有趣内容</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">2</span><span class="name">ポスト</span></a></div><div class="item categories"><a href="/categories/"><span class="count">1</span><span class="name">カテゴリ</span></a></div><div class="item tags"><a href="/tags/"><span class="count">2</span><span class="name">タグ</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/yourname" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>ホーム</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>プロフィール</a></li><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>アーカイブ</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>カテゴリ</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>タグ</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>ランダムな記事</h2><ul><li class="item"><div class="breadcrumb"></div><span><a href="/2025/07/16/hello-world/">Hello World</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/%E5%B7%A5%E7%A8%8B%E8%AE%B0%E5%BD%95/" title="カテゴリ工程记录">工程记录</a></div><span><a href="/2025/07/22/ROS_ROMA_Integration_README/">ROS-ROMA集成SLAM系统使用说明</a></span></li></ul></div><div class="rpost pjax"><h2>最近のコメント</h2></div></div><div class="status"><div class="copyright">&copy; 2024 -<span itemprop="copyrightYear">2025</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">寒宵 @ hanxiao's blog</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="単語の総数">6k 単語</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="読書の合計時間">5 分</span></div><div class="powered-by">Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: false,
+    path: `auto-play`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "検索…",
+        empty: "「 ${query} 」については何も見つかりませんでした",
+        stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    nocopy: "false",
+    copyright: `コピーは成功しました。 <br> 再印刷については、 ％s 契約に従ってください。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">記事の適時性の警告</span><br> {{publish}} 日前に公開され、 {{updated}} 日前に最終更新された記事です。 一部情報が変更されている可能性がありますので、ご了承ください。</p></div>`,
+    quiz: {
+        choice: `選択`,
+        multiple: `複数選択`,
+        true_false: `正誤`,
+        essay: `問答`,
+        gap_fill: `空欄`,
+        mistake: `間違った答え`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.0" type="module" fetchpriority="high" defer></script></body></html><script>console.log('🎵 ShokaX智能音乐启动脚本');
+
+let musicReady = false;
+let playerShown = false;
+
+// 自动显示播放器
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const playerBtn = document.querySelector('#tool .item.player');
+        if (playerBtn && !playerShown) {
+            playerBtn.click();
+            playerShown = true;
+            console.log('🎶 播放器已自动显示');
+            
+            // 显示友好提示
+            showMusicTip();
+        }
+    }, 2000);
+});
+
+// 显示音乐提示
+function showMusicTip() {
+    // 创建一个美观的提示
+    const tip = document.createElement('div');
+    tip.innerHTML = '🎵 点击右侧按钮开始播放音乐';
+    tip.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+    `;
+    
+    document.body.appendChild(tip);
+    
+    // 3秒后淡出提示
+    setTimeout(() => {
+        tip.style.opacity = '0.7';
+    }, 3000);
+    
+    // 音乐开始播放后移除提示
+    const checkMusic = setInterval(() => {
+        const audio = document.querySelector('audio');
+        if (audio && !audio.paused) {
+            tip.style.opacity = '0';
+            setTimeout(() => tip.remove(), 300);
+            clearInterval(checkMusic);
+        }
+    }, 500);
+}
+
+// 用户任意交互立即播放音乐
+function startMusic(event) {
+    if (musicReady) return;
+    
+    const audio = document.querySelector('audio');
+    if (audio && audio.src && audio.paused) {
+        console.log('🎵 用户交互触发，开始播放音乐');
+        audio.play().then(() => {
+            musicReady = true;
+            console.log('🎉 音乐播放成功！');
+            
+            // 如果播放器还没显示，现在显示
+            if (!playerShown) {
+                const playerBtn = document.querySelector('#tool .item.player');
+                if (playerBtn) {
+                    playerBtn.click();
+                    playerShown = true;
+                }
+            }
+        }).catch(e => {
+            console.log('播放失败:', e.message);
+        });
+    }
+}
+
+// 监听所有可能的用户交互
+['click', 'touchstart', 'keydown', 'scroll'].forEach(eventType => {
+    document.addEventListener(eventType, startMusic, { once: true, passive: true });
+});
+
+// 特别优化：鼠标移动也能触发（但延迟一点，避免误触）
+let mouseMoveTimeout;
+document.addEventListener('mousemove', function() {
+    if (musicReady) return;
+    
+    clearTimeout(mouseMoveTimeout);
+    mouseMoveTimeout = setTimeout(() => {
+        startMusic();
+    }, 1000); // 鼠标停止移动1秒后触发
+}, { once: true });</script>
