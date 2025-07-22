@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://hanxiaoi.github.io/blog</id>
+    <id>https://hanxiaoi.github.io</id>
     <title>寒宵的随想录</title>
     <subtitle></subtitle>
-    <icon>https://hanxiaoi.github.io/blog/assets/favicon.ico</icon>
-    <link href="https://hanxiaoi.github.io/blog" />
+    <icon>https://hanxiaoi.github.io/assets/favicon.ico</icon>
+    <link href="https://hanxiaoi.github.io" />
     <author>
       <name>寒宵</name>
     </author>
     <updated>2025-07-21T16:00:00.000Z</updated>
     <entry>
-        <id>https://hanxiaoi.github.io/blog/2025/07/22/ROS_ROMA_Integration_README/</id>
+        <id>https://hanxiaoi.github.io/2025/07/22/ROS_ROMA_Integration_README/</id>
         <title>ROS-ROMA集成SLAM系统使用说明</title>
-        <link rel="alternate" href="https://hanxiaoi.github.io/blog/2025/07/22/ROS_ROMA_Integration_README/"/>
+        <link rel="alternate" href="https://hanxiaoi.github.io/2025/07/22/ROS_ROMA_Integration_README/"/>
         <content type="html">&lt;h2 id=&#34;完整运行步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#完整运行步骤&#34;&gt;#&lt;/a&gt; 完整运行步骤&lt;/h2&gt;
 &lt;h3 id=&#34;环境要求&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#环境要求&#34;&gt;#&lt;/a&gt; 环境要求&lt;/h3&gt;
 &lt;ul&gt;
@@ -159,15 +159,15 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;调试命令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#调试命令&#34;&gt;#&lt;/a&gt; 调试命令&lt;/h3&gt;
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 查看 ROS 话题流量&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rostopic hz /feature_match_request&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;rostopic hz /feature_match_result&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 监控系统资源&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;htop&lt;/span&gt;        &lt;span class=&#34;token comment&#34;&gt;# CPU / 内存使用&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;nvidia-smi  &lt;span class=&#34;token comment&#34;&gt;# GPU 使用情况&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
-        <category term="工程记录" scheme="https://hanxiaoi.github.io/blog/categories/%E5%B7%A5%E7%A8%8B%E8%AE%B0%E5%BD%95/" />
-        <category term="毕设" scheme="https://hanxiaoi.github.io/blog/tags/%E6%AF%95%E8%AE%BE/" />
-        <category term="slam" scheme="https://hanxiaoi.github.io/blog/tags/slam/" />
+        <category term="工程记录" scheme="https://hanxiaoi.github.io/categories/%E5%B7%A5%E7%A8%8B%E8%AE%B0%E5%BD%95/" />
+        <category term="毕设" scheme="https://hanxiaoi.github.io/tags/%E6%AF%95%E8%AE%BE/" />
+        <category term="slam" scheme="https://hanxiaoi.github.io/tags/slam/" />
         <updated>2025-07-21T16:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>https://hanxiaoi.github.io/blog/2025/07/16/hello-world/</id>
+        <id>https://hanxiaoi.github.io/2025/07/16/hello-world/</id>
         <title>Hello World</title>
-        <link rel="alternate" href="https://hanxiaoi.github.io/blog/2025/07/16/hello-world/"/>
+        <link rel="alternate" href="https://hanxiaoi.github.io/2025/07/16/hello-world/"/>
         <content type="html">&lt;p&gt;Welcome to &lt;a href=&#34;https://hexo.io/&#34;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&#34;https://hexo.io/docs/&#34;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&#34;https://hexo.io/docs/troubleshooting.html&#34;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&#34;https://github.com/hexojs/hexo/issues&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
 &lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
