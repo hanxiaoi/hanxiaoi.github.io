@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="寒宵的随想录" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="寒宵的随想录" type="application/atom+xml"><link rel="alternate" type="application/json" title="寒宵的随想录" href="https://hanxiaoi.github.io/feed.json"/><link rel="preconnect" href="https://s4.zstatic.net"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="modulepreload" href="/js/nyx-player-CPO7PTTS.js"></link><link rel="modulepreload" href="/js/copy-tex-QNXBQU3Q.js"></link><link rel="modulepreload" href="/js/post-6PGUWB4P.js"></link><link rel="modulepreload" href="/js/chunk-T7SYQZET.js"></link><link rel="modulepreload" href="/js/index.esm-BNYTVRT3.js"></link><link rel="modulepreload" href="/js/chunk-D4ZSMMI3.js"></link><link rel="modulepreload" href="/js/chunk-6B6XPRSU.js"></link><link rel="stylesheet" href="/css/siteInit.css" media="none" onload="this.media&#x3D;&#39;all&#39;"></link><link rel="preload" href="/wallpaper.jpg" as="image" fetchpriority="high"><meta name="keywords" content="哈希表,简单"/><meta name="description" content="LeetCode第1题两数之和解题记录 - 使用哈希表优化时间复杂度"/><link rel="canonical" href="https://hanxiaoi.github.io/2025/07/23/LeetCode_001_TwoSum/"><link rel="stylesheet" href="/css/post.css?v=0.5.0"><link rel="stylesheet" href="/css/mermaid.css?v=0.5.0"><!-- 临时处理--><link rel="stylesheet" media="none" onload="this.media='all'" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css"><title>LeetCode 001 - 两数之和</title><meta name="generator" content="Hexo 7.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">LeetCode 001 - 两数之和</h1><div class="meta"><span class="item" title="创建时间：2025-07-23 00:00:00"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2025-07-23T00:00:00+08:00">2025-07-23</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>2k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>2 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">hanxiao's blog</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><img src="/wallpaper.jpg" loading="eager" decoding="async" fetchpriority="high" alt="寒宵的随想录"></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" itemprop="item" rel="index" title="分类于LeetCode刷题"><span itemprop="name">LeetCode刷题<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://hanxiaoi.github.io/2025/07/23/LeetCode_001_TwoSum/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="寒宵"/><meta itemprop="description" content=", 记录有趣内容"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="寒宵的随想录"/></span><div class="body md" itemprop="articleBody"><h2 id="题目描述"><a class="anchor" href="#题目描述">#</a> 📋 题目描述</h2>
+<p><strong>题目编号</strong>: 1<br />
+<strong> 题目名称</strong>：两数之和<br />
+<strong>难度</strong>：简单<br />
+<strong>标签</strong>：哈希表 | 数组 | 相关企业 | 提示</p>
+<p>给定一个整数数组  <code>nums</code>  和一个整数目标值  <code>target</code> ，请你在该数组中找出和为目标值  <code>target</code>  的那两个整数，并返回它们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案，并且你不能使用两次相同的元素。</p>
+<p>你可以按任意顺序返回答案。</p>
+<hr />
+<h2 id="示例分析"><a class="anchor" href="#示例分析">#</a> 🔍 示例分析</h2>
+<h3 id="示例-1"><a class="anchor" href="#示例-1">#</a> 示例 1:</h3>
+<pre><code>输入: nums = [2,7,11,15], target = 9
+输出: [0,1]
+解释: 因为 nums[0] + nums[1] == 9，返回 [0, 1]。
+</code></pre>
+<h3 id="示例-2"><a class="anchor" href="#示例-2">#</a> 示例 2:</h3>
+<pre><code>输入: nums = [3,2,4], target = 6
+输出: [1,2]
+</code></pre>
+<h3 id="示例-3"><a class="anchor" href="#示例-3">#</a> 示例 3:</h3>
+<pre><code>输入: nums = [3,3], target = 6
+输出: [0,1]
+</code></pre>
+<hr />
+<h2 id="解题思路"><a class="anchor" href="#解题思路">#</a> 💡 解题思路</h2>
+<h3 id="方法哈希表一次遍历"><a class="anchor" href="#方法哈希表一次遍历">#</a> 方法：哈希表一次遍历</h3>
+<p><strong>核心思想</strong>：使用哈希表存储已遍历的元素及其索引，对于当前元素，查找哈希表中是否存在目标差值。</p>
+<p><strong>算法步骤</strong>:</p>
+<ol>
+<li>创建一个哈希表  <code>map</code>  用于存储  <code>&#123;元素值: 索引&#125;</code>  的映射</li>
+<li>遍历数组  <code>nums</code> ：
+<ul>
+<li>计算当前元素需要的配对值： <code>complement = target - nums[i]</code></li>
+<li>在哈希表中查找是否存在这个配对值</li>
+<li>如果存在，返回配对值的索引和当前索引</li>
+<li>如果不存在，将当前元素和索引存入哈希表</li>
+</ul>
+</li>
+<li>继续遍历直到找到答案</li>
+</ol>
+<p><strong>关键优化</strong>:</p>
+<ul>
+<li>边遍历边查找，避免重复计算</li>
+<li>保证不会使用同一个元素两次（因为先查找再插入）</li>
+</ul>
+<hr />
+<h2 id="代码实现"><a class="anchor" href="#代码实现">#</a> 💻 代码实现</h2>
+<figure class="highlight cpp"><figcaption data-lang="C++"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">public</span><span class="token operator">:</span></pre></td></tr><tr><td data-num="3"></td><td><pre>    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">twoSum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="4"></td><td><pre>        std<span class="token double-colon punctuation">::</span>unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> map<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        </pre></td></tr><tr><td data-num="6"></td><td><pre>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>            <span class="token comment">// 计算当前元素需要的配对值</span></pre></td></tr><tr><td data-num="8"></td><td><pre>            <span class="token keyword">int</span> complement <span class="token operator">=</span> target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="9"></td><td><pre>            </pre></td></tr><tr><td data-num="10"></td><td><pre>            <span class="token comment">// 在哈希表中查找配对值</span></pre></td></tr><tr><td data-num="11"></td><td><pre>            <span class="token keyword">auto</span> it <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>complement<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre>            <span class="token keyword">if</span><span class="token punctuation">(</span>it <span class="token operator">!=</span> map<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>                <span class="token comment">// 找到配对，返回两个索引</span></pre></td></tr><tr><td data-num="14"></td><td><pre>                <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>it<span class="token operator">-></span>second<span class="token punctuation">,</span> i<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            </pre></td></tr><tr><td data-num="17"></td><td><pre>            <span class="token comment">// 将当前元素存入哈希表</span></pre></td></tr><tr><td data-num="18"></td><td><pre>            map<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="19"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>        </pre></td></tr><tr><td data-num="21"></td><td><pre>        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 题目保证有解，这里不会执行到</span></pre></td></tr><tr><td data-num="22"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token punctuation">&#125;</span><span class="token punctuation">;</span></pre></td></tr></table></figure><hr />
+<h2 id="复杂度分析"><a class="anchor" href="#复杂度分析">#</a> 📊 复杂度分析</h2>
+<ul>
+<li>
+<p><strong>时间复杂度</strong>: O (n)</p>
+<ul>
+<li>只需要遍历数组一次</li>
+<li>哈希表的查找和插入操作平均时间复杂度为 O (1)</li>
+</ul>
+</li>
+<li>
+<p><strong>空间复杂度</strong>: O (n)</p>
+<ul>
+<li>最坏情况下哈希表需要存储 n-1 个元素</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="其他解法对比"><a class="anchor" href="#其他解法对比">#</a> 🎯 其他解法对比</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>时间复杂度</th>
+<th>空间复杂度</th>
+<th>优缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>暴力枚举</strong></td>
+<td>O(n²)</td>
+<td>O(1)</td>
+<td>❌ 时间复杂度高</td>
+</tr>
+<tr>
+<td><strong>哈希表</strong></td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>✅ 时间最优，空间换时间</td>
+</tr>
+<tr>
+<td><strong>排序 + 双指针</strong></td>
+<td>O(n log n)</td>
+<td>O(1)</td>
+<td>❌ 需要额外处理索引</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="解题心得"><a class="anchor" href="#解题心得">#</a> 💭 解题心得</h2>
+<h3 id="关键收获"><a class="anchor" href="#关键收获">#</a> ✅ 关键收获：</h3>
+<ul>
+<li><strong>哈希表的巧妙应用</strong>：将 &quot;查找配对&quot; 问题转化为 &quot;查找差值&quot; 问题</li>
+<li><strong>边遍历边处理</strong>：避免了两次遍历，提高了效率</li>
+<li><strong>索引处理技巧</strong>：先查找再插入，自然避免了重复使用同一元素</li>
+</ul>
+<h3 id="实现细节"><a class="anchor" href="#实现细节">#</a> 🔧 实现细节：</h3>
+<ul>
+<li>使用  <code>unordered_map</code>  获得平均 O (1) 的查找时间</li>
+<li><code>find()</code>  方法返回迭代器，需要与  <code>end()</code>  比较判断是否找到</li>
+<li>返回格式： <code>&#123;较早出现的索引, 当前索引&#125;</code></li>
+</ul>
+<div class="tags"><a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag"><i class="ic i-tag"></i>哈希表</a><a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"><i class="ic i-tag"></i>数组</a><a href="/tags/%E7%AE%80%E5%8D%95/" rel="tag"><i class="ic i-tag"></i>简单</a></div></div><footer><div class="meta"></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>寒宵<i class="ic i-at"><em>@</em></i>寒宵的随想录</li><li class="link"><strong>本文链接：</strong><a href="https://hanxiaoi.github.io/2025/07/23/LeetCode_001_TwoSum/" title="LeetCode 001 - 两数之和">https://hanxiaoi.github.io/2025/07/23/LeetCode_001_TwoSum/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2025/07/22/ROS_ROMA_Integration_README/" rel="prev" itemprop="url" data-background-image="&#x2F;images&#x2F;md07221.jpg" title="ROS-ROMA集成SLAM系统使用说明"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>工程记录</span><h3>ROS-ROMA集成SLAM系统使用说明</h3></a></div><div class="item right"></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text"> 📋 题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text"> 🔍 示例分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text"> 示例 1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">2.2.</span> <span class="toc-text"> 示例 2:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="toc-number">2.3.</span> <span class="toc-text"> 示例 3:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-number">3.</span> <span class="toc-text"> 💡 解题思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%93%88%E5%B8%8C%E8%A1%A8%E4%B8%80%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">3.1.</span> <span class="toc-text"> 方法：哈希表一次遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text"> 💻 代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text"> 📊 复杂度分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%A7%A3%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-number">6.</span> <span class="toc-text"> 🎯 其他解法对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E5%BF%83%E5%BE%97"><span class="toc-number">7.</span> <span class="toc-text"> 💭 解题心得</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%94%B6%E8%8E%B7"><span class="toc-number">7.1.</span> <span class="toc-text"> ✅ 关键收获：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-number">7.2.</span> <span class="toc-text"> 🔧 实现细节：</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li  class="active"><a href="/2025/07/23/LeetCode_001_TwoSum/" rel="bookmark" title="LeetCode 001 - 两数之和">LeetCode 001 - 两数之和</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="寒宵" src="/assets/avatar.jpg"/><p class="name" itemprop="name">寒宵</p><div class="description" itemprop="description">记录有趣内容</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">3</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">2</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">5</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/yourname" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="ic i-github"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2025/07/22/ROS_ROMA_Integration_README/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div><div id="player"></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/%E5%B7%A5%E7%A8%8B%E8%AE%B0%E5%BD%95/" title="分类于工程记录">工程记录</a></div><span><a href="/2025/07/22/ROS_ROMA_Integration_README/">ROS-ROMA集成SLAM系统使用说明</a></span></li><li class="item"><div class="breadcrumb"></div><span><a href="/2025/07/16/hello-world/">Hello World</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/LeetCode%E5%88%B7%E9%A2%98/" title="分类于LeetCode刷题">LeetCode刷题</a></div><span><a href="/2025/07/23/LeetCode_001_TwoSum/">LeetCode 001 - 两数之和</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2></div></div><div class="status"><div class="copyright">&copy; 2024 -<span itemprop="copyrightYear">2025</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">寒宵 @ hanxiao's blog</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">8k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">7 分钟</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+    path: `2025/07/23/LeetCode_001_TwoSum/`,
+    favicon: {
+        show: `（●´3｀●）やれやれだぜ`,
+        hide: `(´Д｀)大変だ！`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    nocopy: "false",
+    copyright: `复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。`,
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    }
+};
+</script><script src="/js/siteInit.js?v=0.5.0" type="module" fetchpriority="high" defer></script></body></html><script>console.log('🎵 ShokaX智能音乐启动脚本');
+
+let musicReady = false;
+let playerShown = false;
+
+// 自动显示播放器
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        const playerBtn = document.querySelector('#tool .item.player');
+        if (playerBtn && !playerShown) {
+            playerBtn.click();
+            playerShown = true;
+            console.log('🎶 播放器已自动显示');
+            
+            // 显示友好提示
+            showMusicTip();
+        }
+    }, 2000);
+});
+
+// 显示音乐提示
+function showMusicTip() {
+    // 创建一个美观的提示
+    const tip = document.createElement('div');
+    tip.innerHTML = '🎵 点击右侧按钮开始播放音乐';
+    tip.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+        cursor: pointer;
+    `;
+    
+    document.body.appendChild(tip);
+    
+    // 3秒后淡出提示
+    setTimeout(() => {
+        tip.style.opacity = '0.7';
+    }, 3000);
+    
+    // 音乐开始播放后移除提示
+    const checkMusic = setInterval(() => {
+        const audio = document.querySelector('audio');
+        if (audio && !audio.paused) {
+            tip.style.opacity = '0';
+            setTimeout(() => tip.remove(), 300);
+            clearInterval(checkMusic);
+        }
+    }, 500);
+}
+
+// 用户任意交互立即播放音乐
+function startMusic(event) {
+    if (musicReady) return;
+    
+    const audio = document.querySelector('audio');
+    if (audio && audio.src && audio.paused) {
+        console.log('🎵 用户交互触发，开始播放音乐');
+        audio.play().then(() => {
+            musicReady = true;
+            console.log('🎉 音乐播放成功！');
+            
+            // 如果播放器还没显示，现在显示
+            if (!playerShown) {
+                const playerBtn = document.querySelector('#tool .item.player');
+                if (playerBtn) {
+                    playerBtn.click();
+                    playerShown = true;
+                }
+            }
+        }).catch(e => {
+            console.log('播放失败:', e.message);
+        });
+    }
+}
+
+// 监听所有可能的用户交互
+['click', 'touchstart', 'keydown', 'scroll'].forEach(eventType => {
+    document.addEventListener(eventType, startMusic, { once: true, passive: true });
+});
+
+// 特别优化：鼠标移动也能触发（但延迟一点，避免误触）
+let mouseMoveTimeout;
+document.addEventListener('mousemove', function() {
+    if (musicReady) return;
+    
+    clearTimeout(mouseMoveTimeout);
+    mouseMoveTimeout = setTimeout(() => {
+        startMusic();
+    }, 1000); // 鼠标停止移动1秒后触发
+}, { once: true });</script>
