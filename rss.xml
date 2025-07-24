@@ -13,6 +13,95 @@
         <pubDate>Wed, 23 Jul 2025 00:00:00 +0800</pubDate>
         <lastBuildDate>Wed, 23 Jul 2025 00:00:00 +0800</lastBuildDate>
         <item>
+            <guid isPermalink="true">https://hanxiaoi.github.io/2025/07/23/LeetCode_049_GroupAnagrams/</guid>
+            <title>LeetCode 049 - 字母异位词分组</title>
+            <link>https://hanxiaoi.github.io/2025/07/23/LeetCode_049_GroupAnagrams/</link>
+            <category term="LeetCode刷题" scheme="https://hanxiaoi.github.io/categories/LeetCode%E5%88%B7%E9%A2%98/" />
+            <category term="哈希表" scheme="https://hanxiaoi.github.io/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" />
+            <category term="字符串" scheme="https://hanxiaoi.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" />
+            <category term="中等" scheme="https://hanxiaoi.github.io/tags/%E4%B8%AD%E7%AD%89/" />
+            <pubDate>Wed, 23 Jul 2025 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;题目描述&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#题目描述&#34;&gt;#&lt;/a&gt; 📋 题目描述&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;题目编号&lt;/strong&gt;: 49&lt;br /&gt;
+&lt;strong&gt; 题目名称&lt;/strong&gt;：字母异位词分组&lt;br /&gt;
+&lt;strong&gt;难度&lt;/strong&gt;：中等&lt;br /&gt;
+&lt;strong&gt;标签&lt;/strong&gt;：哈希表 | 字符串 | 相关企业 | 提示&lt;/p&gt;
+&lt;p&gt;给你一个字符串数组，请你将字母异位词组合在一起。可以按任意顺序返回结果列表。&lt;/p&gt;
+&lt;p&gt;字母异位词是通过重新排列不同单词或短语的字母而形成的单词或短语，通常只使用所有原始字母一次。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;示例分析&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#示例分析&#34;&gt;#&lt;/a&gt; 🔍 示例分析&lt;/h2&gt;
+&lt;h3 id=&#34;示例-1&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#示例-1&#34;&gt;#&lt;/a&gt; 示例 1:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;输入: strs = [&amp;quot;eat&amp;quot;,&amp;quot;tea&amp;quot;,&amp;quot;tan&amp;quot;,&amp;quot;ate&amp;quot;,&amp;quot;nat&amp;quot;,&amp;quot;bat&amp;quot;]
+输出: [[&amp;quot;bat&amp;quot;],[&amp;quot;nat&amp;quot;,&amp;quot;tan&amp;quot;],[&amp;quot;ate&amp;quot;,&amp;quot;eat&amp;quot;,&amp;quot;tea&amp;quot;]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;解释&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 strs 中没有字符串可以通过重新排列来形成 &amp;quot;bat&amp;quot;&lt;/li&gt;
+&lt;li&gt;字符串 &amp;quot;nat&amp;quot; 和 &amp;quot;tan&amp;quot; 是字母异位词，因为它们可以重新排列形成彼此&lt;/li&gt;
+&lt;li&gt;字符串 &amp;quot;ate&amp;quot;、&amp;quot;eat&amp;quot; 和 &amp;quot;tea&amp;quot; 是字母异位词，因为它们可以重新排列形成彼此&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;示例-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#示例-2&#34;&gt;#&lt;/a&gt; 示例 2:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;输入: strs = [&amp;quot;&amp;quot;]
+输出: [[&amp;quot;&amp;quot;]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;示例-3&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#示例-3&#34;&gt;#&lt;/a&gt; 示例 3:&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;输入: strs = [&amp;quot;a&amp;quot;]
+输出: [[&amp;quot;a&amp;quot;]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;解题思路&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解题思路&#34;&gt;#&lt;/a&gt; 💡 解题思路&lt;/h2&gt;
+&lt;h3 id=&#34;方法字符频次编码-哈希表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#方法字符频次编码-哈希表&#34;&gt;#&lt;/a&gt; 方法：字符频次编码 + 哈希表&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;核心思想&lt;/strong&gt;：字母异位词具有相同的字符频次分布，可以用字符频次作为分组的键值。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;算法步骤&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;遍历字符串数组中的每个字符串&lt;/li&gt;
+&lt;li&gt;统计每个字符串中各字母的出现频次&lt;/li&gt;
+&lt;li&gt;将频次信息编码为唯一的键值字符串&lt;/li&gt;
+&lt;li&gt;使用哈希表将具有相同键值的字符串分为一组&lt;/li&gt;
+&lt;li&gt;提取哈希表中的所有分组作为最终结果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;编码策略&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用长度为 26 的数组统计 a-z 每个字母的频次&lt;/li&gt;
+&lt;li&gt;将频次数组编码为字符串格式： &lt;code&gt;#count1#count2#...#count26&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;相同异位词必然生成相同的编码键值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;代码实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#代码实现&#34;&gt;#&lt;/a&gt; 💻 代码实现&lt;/h2&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;figcaption data-lang=&#34;C++&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;Solution&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    vector&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;vector&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;string&lt;span class=&#34;token operator&#34;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;groupAnagrams&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;vector&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;string&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt; strs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        unordered_map&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;string&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; vector&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;string&lt;span class=&#34;token operator&#34;&gt;&gt;&gt;&lt;/span&gt; mp&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;string&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt; str &lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; strs&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;// 统计字符频次&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            vector&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;counts&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;char&lt;/span&gt; s &lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; str&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                counts&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;s &lt;span class=&#34;token operator&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;token char&#34;&gt;&#39;a&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;// 编码为唯一键值&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            string k&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;int&lt;/span&gt; count &lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; counts&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                k &lt;span class=&#34;token operator&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;token char&#34;&gt;&#39;#&#39;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;                k &lt;span class=&#34;token operator&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;to_string&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;count&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            &lt;span class=&#34;token comment&#34;&gt;// 按键值分组&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            mp&lt;span class=&#34;token punctuation&#34;&gt;[&lt;/span&gt;k&lt;span class=&#34;token punctuation&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;emplace_back&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;str&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token comment&#34;&gt;// 提取所有分组&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        vector&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;vector&lt;span class=&#34;token operator&#34;&gt;&amp;lt;&lt;/span&gt;string&lt;span class=&#34;token operator&#34;&gt;&gt;&gt;&lt;/span&gt; res&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token keyword&#34;&gt;auto&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&amp;amp;&lt;/span&gt; i &lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; mp&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;            res&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;emplace_back&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;i&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;second&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; res&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;hr /&gt;
+&lt;h2 id=&#34;复杂度分析&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#复杂度分析&#34;&gt;#&lt;/a&gt; 📊 复杂度分析&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;时间复杂度&lt;/strong&gt;: O (n × (m + 26))&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;n 为字符串数组长度，m 为字符串平均长度&lt;/li&gt;
+&lt;li&gt;每个字符串需要 O (m) 时间统计频次，O (26) 时间生成键值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;空间复杂度&lt;/strong&gt;: O (n × m)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;哈希表存储所有字符串，最坏情况下每个字符串都是单独一组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;h2 id=&#34;解题心得&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#解题心得&#34;&gt;#&lt;/a&gt; 💭 解题心得&lt;/h2&gt;
+&lt;h3 id=&#34;关键收获&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#关键收获&#34;&gt;#&lt;/a&gt; ✅ 关键收获：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;字符频次编码&lt;/strong&gt;：将异位词识别问题转化为字符串匹配问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;哈希表分组&lt;/strong&gt;：利用相同键值自动完成分组操作&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;编码技巧&lt;/strong&gt;：使用分隔符避免频次组合产生歧义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;实现细节&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实现细节&#34;&gt;#&lt;/a&gt; 🔧 实现细节：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;使用  &lt;code&gt;vector&amp;lt;int&amp;gt; counts(26, 0)&lt;/code&gt;  统计 26 个字母频次&lt;/li&gt;
+&lt;li&gt;键值编码格式： &lt;code&gt;#1#2#0#...&lt;/code&gt;  避免如 &amp;quot;12&amp;quot; 和 &amp;quot;1,2&amp;quot; 的歧义&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;emplace_back()&lt;/code&gt;  比  &lt;code&gt;push_back()&lt;/code&gt;  效率更高&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">https://hanxiaoi.github.io/2025/07/23/LeetCode_001_TwoSum/</guid>
             <title>LeetCode 001 - 两数之和</title>
             <link>https://hanxiaoi.github.io/2025/07/23/LeetCode_001_TwoSum/</link>
